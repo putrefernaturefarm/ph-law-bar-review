@@ -1,0 +1,13 @@
+[project]
+name = "ph-law-ingestion"
+version = "0.1.0"
+description = "Document ingestion pipeline for PH Law Bar Review"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40.0",
+    "supabase>=2.9.0",
+    "pymupdf>=1.25.0",
+    "python-docx>=1.1.0",
+    "python-pptx>=1.0.0",
+    "python-dotenv>=1.0.0",
+]
