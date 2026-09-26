@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Dark theme (default) ─────────────────────────────── */
 :root {
   --bg: #080d1a;
   --surface: #0f1629;
@@ -9,8 +10,26 @@
   --border: #1e2a4a;
   --gold: #d4af37;
   --gold-bright: #f0c040;
+  --gold-subtle: rgba(212, 175, 55, 0.08);
   --text: #f0f4ff;
   --text-muted: #8896b3;
+  --text-dim: #4a5470;
+  --overlay: rgba(8, 13, 26, 0.85);
+}
+
+/* ── Light theme (warm parchment / law library) ───────── */
+.light {
+  --bg: #f5f2eb;
+  --surface: #fffdf8;
+  --surface2: #ede9df;
+  --border: #d0c8b8;
+  --gold: #9a7b1a;
+  --gold-bright: #b8921e;
+  --gold-subtle: rgba(154, 123, 26, 0.1);
+  --text: #1c1a14;
+  --text-muted: #6b6358;
+  --text-dim: #a09580;
+  --overlay: rgba(245, 242, 235, 0.9);
 }
 
 * {
@@ -41,7 +60,7 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e3d5e;
+  background: var(--text-dim);
 }
 
 /* Focus styles */

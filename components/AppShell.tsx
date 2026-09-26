@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { useTheme } from 'next-themes'
 import { createClient } from '@/lib/supabase/client'
 import { cn } from '@/lib/utils'
 
@@ -74,11 +75,59 @@ const navItems = [
   },
 ]
 
+function SunIcon() {
+  return (
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <circle cx="12" cy="12" r="5" />
+      <line x1="12" y1="1" x2="12" y2="3" strokeLinecap="round" />
+      <line x1="12" y1="21" x2="12" y2="23" strokeLinecap="round" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" strokeLinecap="round" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" strokeLinecap="round" />
+      <line x1="1" y1="12" x2="3" y2="12" strokeLinecap="round" />
+      <line x1="21" y1="12" x2="23" y2="12" strokeLinecap="round" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" strokeLinecap="round" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+    </svg>
+  )
+}
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  const isDark = theme === 'dark'
+
+  return (
+    <button
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs font-medium transition-all hover:opacity-80"
+      style={{
+        color: 'var(--text-muted)',
+        border: '1px solid var(--border)',
+        background: 'transparent',
+      }}
+      aria-label="Toggle theme"
+    >
+      <span style={{ color: 'var(--gold)' }}>
+        {isDark ? <SunIcon /> : <MoonIcon />}
+      </span>
+      {isDark ? 'Light Mode' : 'Dark Mode'}
+    </button>
+  )
+}
+
 export default function AppShell({ children, userEmail }: AppShellProps) {
   const pathname = usePathname()
   const router = useRouter()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   async function handleSignOut() {
     setSigningOut(true)
@@ -92,27 +141,27 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
     userEmail.length > 22 ? userEmail.slice(0, 20) + '...' : userEmail
 
   return (
-    <div className="min-h-screen flex" style={{ background: '#080d1a' }}>
+    <div className="min-h-screen flex" style={{ background: 'var(--bg)' }}>
       {/* Desktop Sidebar */}
       <aside
         className="hidden md:flex flex-col fixed top-0 left-0 h-full w-60 z-30"
         style={{
-          background: '#0f1629',
-          borderRight: '1px solid rgba(212,175,55,0.1)',
+          background: 'var(--surface)',
+          borderRight: '1px solid var(--gold-subtle)',
         }}
       >
         {/* Logo */}
-        <div className="px-6 py-5 border-b" style={{ borderColor: 'rgba(212,175,55,0.08)' }}>
+        <div className="px-6 py-5 border-b" style={{ borderColor: 'var(--gold-subtle)' }}>
           <Link href="/dashboard" className="flex items-center gap-2.5">
             <span className="text-2xl">⚖️</span>
             <div>
               <div
                 className="text-sm font-bold tracking-widest leading-tight"
-                style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+                style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
               >
                 LEXIS
               </div>
-              <div className="text-xs" style={{ color: '#4a5470' }}>
+              <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
                 BAR REVIEW
               </div>
             </div>
@@ -129,12 +178,12 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
                 href={item.href}
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all',
-                  active ? 'text-gold-active' : 'opacity-60 hover:opacity-100'
+                  active ? '' : 'opacity-60 hover:opacity-100'
                 )}
                 style={{
-                  color: active ? '#d4af37' : '#8896b3',
-                  background: active ? 'rgba(212,175,55,0.08)' : 'transparent',
-                  borderLeft: active ? '2px solid #d4af37' : '2px solid transparent',
+                  color: active ? 'var(--gold)' : 'var(--text-muted)',
+                  background: active ? 'var(--gold-subtle)' : 'transparent',
+                  borderLeft: active ? '2px solid var(--gold)' : '2px solid transparent',
                 }}
               >
                 {item.icon}
@@ -144,21 +193,22 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
           })}
         </nav>
 
-        {/* User / Signout */}
-        <div className="px-4 py-4 border-t" style={{ borderColor: 'rgba(212,175,55,0.08)' }}>
+        {/* User / Theme / Signout */}
+        <div className="px-4 py-4 border-t space-y-2" style={{ borderColor: 'var(--gold-subtle)' }}>
           <div className="mb-3">
-            <div className="text-xs font-medium mb-0.5" style={{ color: '#8896b3' }}>
+            <div className="text-xs font-medium mb-0.5" style={{ color: 'var(--text-muted)' }}>
               Signed in as
             </div>
-            <div className="text-xs font-mono" style={{ color: '#d4af37' }}>
+            <div className="text-xs font-mono" style={{ color: 'var(--gold)' }}>
               {shortEmail}
             </div>
           </div>
+          <ThemeToggle />
           <button
             onClick={handleSignOut}
             disabled={signingOut}
             className="w-full py-2 rounded-lg text-xs font-medium border transition-all hover:opacity-80 disabled:opacity-40"
-            style={{ borderColor: '#1e2a4a', color: '#8896b3' }}
+            style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
           >
             {signingOut ? 'Signing out...' : 'Sign Out'}
           </button>
@@ -168,31 +218,45 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
       {/* Mobile Topbar */}
       <div
         className="md:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3"
-        style={{ background: '#0f1629', borderBottom: '1px solid rgba(212,175,55,0.08)' }}
+        style={{
+          background: 'var(--surface)',
+          borderBottom: '1px solid var(--gold-subtle)',
+        }}
       >
         <Link href="/dashboard" className="flex items-center gap-2">
           <span className="text-xl">⚖️</span>
           <span
             className="text-sm font-bold tracking-widest"
-            style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+            style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
           >
             LEXIS
           </span>
         </Link>
-        <button
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 rounded-lg"
-          style={{ color: '#8896b3' }}
-          aria-label="Toggle menu"
-        >
-          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            {sidebarOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Mobile theme toggle */}
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg transition-all hover:opacity-80"
+            style={{ color: 'var(--gold)' }}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-lg"
+            style={{ color: 'var(--text-muted)' }}
+            aria-label="Toggle menu"
+          >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              {sidebarOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
@@ -200,11 +264,11 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
         <div
           className="md:hidden fixed inset-0 z-30"
           onClick={() => setSidebarOpen(false)}
-          style={{ background: 'rgba(8,13,26,0.8)' }}
+          style={{ background: 'var(--overlay)' }}
         >
           <div
             className="absolute top-0 left-0 h-full w-64 pt-16"
-            style={{ background: '#0f1629' }}
+            style={{ background: 'var(--surface)' }}
             onClick={(e) => e.stopPropagation()}
           >
             <nav className="px-3 py-4 space-y-0.5">
@@ -217,8 +281,8 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
                     onClick={() => setSidebarOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
                     style={{
-                      color: active ? '#d4af37' : '#8896b3',
-                      background: active ? 'rgba(212,175,55,0.08)' : 'transparent',
+                      color: active ? 'var(--gold)' : 'var(--text-muted)',
+                      background: active ? 'var(--gold-subtle)' : 'transparent',
                     }}
                   >
                     {item.icon}
@@ -227,14 +291,15 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
                 )
               })}
             </nav>
-            <div className="px-4 border-t mt-2 pt-4" style={{ borderColor: '#1e2a4a' }}>
-              <div className="text-xs mb-3 font-mono" style={{ color: '#4a5470' }}>
+            <div className="px-4 border-t mt-2 pt-4 space-y-2" style={{ borderColor: 'var(--border)' }}>
+              <div className="text-xs mb-1 font-mono" style={{ color: 'var(--text-dim)' }}>
                 {shortEmail}
               </div>
+              <ThemeToggle />
               <button
                 onClick={handleSignOut}
                 className="w-full py-2 rounded-lg text-xs font-medium border"
-                style={{ borderColor: '#1e2a4a', color: '#8896b3' }}
+                style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
               >
                 Sign Out
               </button>
@@ -252,8 +317,8 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
       <nav
         className="md:hidden fixed bottom-0 left-0 right-0 z-30 flex items-center justify-around py-2"
         style={{
-          background: '#0f1629',
-          borderTop: '1px solid rgba(212,175,55,0.08)',
+          background: 'var(--surface)',
+          borderTop: '1px solid var(--gold-subtle)',
         }}
       >
         {navItems.map((item) => {
@@ -263,7 +328,7 @@ export default function AppShell({ children, userEmail }: AppShellProps) {
               key={item.href}
               href={item.href}
               className="flex flex-col items-center gap-1 px-3 py-1"
-              style={{ color: active ? '#d4af37' : '#4a5470' }}
+              style={{ color: active ? 'var(--gold)' : 'var(--text-dim)' }}
             >
               {item.icon}
               <span className="text-[10px] font-medium">{item.label}</span>
