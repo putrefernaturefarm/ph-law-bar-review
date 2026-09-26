@@ -4,13 +4,18 @@ import { BAR_SUBJECTS } from '@/lib/subjects'
 
 export const dynamic = 'force-dynamic'
 
+type QuestionRow = { id: string; level: string; subject: string | null }
+type ProgressRow = { status: string; times_correct: number; times_incorrect: number }
+
 async function getStats(userId: string) {
   const supabase = await createClient()
 
   // Total questions and breakdown by level
-  const { data: questions } = await supabase
+  const { data: questionsRaw } = await supabase
     .from('questions')
     .select('id, level, subject')
+
+  const questions = questionsRaw as QuestionRow[] | null
 
   const total = questions?.length ?? 0
   const byLevel = {
@@ -27,18 +32,20 @@ async function getStats(userId: string) {
   }
 
   // User progress
-  const { data: progress } = await supabase
+  const { data: progressRaw } = await supabase
     .from('user_question_progress')
     .select('status, times_correct, times_incorrect')
     .eq('user_id', userId)
 
+  const progress = progressRaw as ProgressRow[] | null
+
   const reviewed = progress?.length ?? 0
-  const mastered = progress?.filter((p) => p.status === 'known').length ?? 0
-  const weak = progress?.filter((p) => p.status === 'unknown').length ?? 0
-  const totalCorrect = progress?.reduce((s, p) => s + (p.times_correct ?? 0), 0) ?? 0
+  const mastered = progress?.filter((p: ProgressRow) => p.status === 'known').length ?? 0
+  const weak = progress?.filter((p: ProgressRow) => p.status === 'unknown').length ?? 0
+  const totalCorrect = progress?.reduce((s: number, p: ProgressRow) => s + (p.times_correct ?? 0), 0) ?? 0
   const totalAnswers =
     (progress?.reduce(
-      (s, p) => s + (p.times_correct ?? 0) + (p.times_incorrect ?? 0),
+      (s: number, p: ProgressRow) => s + (p.times_correct ?? 0) + (p.times_incorrect ?? 0),
       0
     ) ?? 0)
   const accuracy = totalAnswers > 0 ? Math.round((totalCorrect / totalAnswers) * 100) : 0

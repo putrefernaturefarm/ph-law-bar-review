@@ -38,3 +38,5 @@ next-env.d.ts
 ingestion/.venv/
 ingestion/__pycache__/
 ingestion/*.pyc
+
+.vercel
