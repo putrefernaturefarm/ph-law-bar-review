@@ -88,12 +88,12 @@ export default async function ProgressPage() {
   return (
     <div className="px-6 py-8 pb-24 md:pb-8 max-w-4xl mx-auto">
       <div className="mb-8">
-        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: '#4a5470' }}>
+        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--text-dim)' }}>
           Your Journey
         </div>
         <h1
           className="text-2xl font-bold"
-          style={{ color: '#f0f4ff', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--text)', fontFamily: 'Georgia, serif' }}
         >
           Progress
         </h1>
@@ -105,7 +105,7 @@ export default async function ProgressPage() {
           <StatCard value={`${accuracy}%`} label="Accuracy" accent />
           <StatCard value={totalReviewed} label="Reviewed" />
           <StatCard value={mastered} label="Mastered" color="#10b981" />
-          <StatCard value={streak} label="Day Streak" color="#d4af37" />
+          <StatCard value={streak} label="Day Streak" color="var(--gold)" />
         </div>
       </section>
 
@@ -113,13 +113,13 @@ export default async function ProgressPage() {
       <section className="mb-8">
         <h2
           className="text-xs font-semibold tracking-widest uppercase mb-4"
-          style={{ color: '#4a5470' }}
+          style={{ color: 'var(--text-dim)' }}
         >
           Question Status
         </h2>
         <div
           className="rounded-xl border p-5"
-          style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.08)' }}
+          style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
         >
           <StatusRow label="Mastered" value={mastered} total={totalReviewed} color="#10b981" />
           <StatusRow label="Needs Review" value={weak} total={totalReviewed} color="#ef4444" />
@@ -131,7 +131,7 @@ export default async function ProgressPage() {
       <section className="mb-8">
         <h2
           className="text-xs font-semibold tracking-widest uppercase mb-4"
-          style={{ color: '#4a5470' }}
+          style={{ color: 'var(--text-dim)' }}
         >
           By Subject
         </h2>
@@ -147,19 +147,19 @@ export default async function ProgressPage() {
               <div
                 key={subject}
                 className="rounded-xl p-4 border"
-                style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.08)' }}
+                style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium" style={{ color: '#8896b3' }}>
+                  <span className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
                     {subject}
                   </span>
-                  <span className="text-xs" style={{ color: '#4a5470' }}>
+                  <span className="text-xs" style={{ color: 'var(--text-dim)' }}>
                     {mastered_} / {total}
                   </span>
                 </div>
                 <div
                   className="h-2 rounded-full overflow-hidden"
-                  style={{ background: '#1e2a4a' }}
+                  style={{ background: 'var(--border)' }}
                 >
                   <div
                     className="h-full rounded-full transition-all"
@@ -169,12 +169,12 @@ export default async function ProgressPage() {
                         pct > 66
                           ? '#10b981'
                           : pct > 33
-                          ? '#f0c040'
-                          : '#d4af37',
+                          ? 'var(--gold-bright)'
+                          : 'var(--gold)',
                     }}
                   />
                 </div>
-                <div className="flex justify-between text-xs mt-1" style={{ color: '#4a5470' }}>
+                <div className="flex justify-between text-xs mt-1" style={{ color: 'var(--text-dim)' }}>
                   <span>{pct}% mastered</span>
                   {weak_ > 0 && (
                     <span style={{ color: '#ef4444' }}>{weak_} weak</span>
@@ -190,7 +190,7 @@ export default async function ProgressPage() {
       <section>
         <h2
           className="text-xs font-semibold tracking-widest uppercase mb-4"
-          style={{ color: '#4a5470' }}
+          style={{ color: 'var(--text-dim)' }}
         >
           Recent Sessions
         </h2>
@@ -213,13 +213,13 @@ export default async function ProgressPage() {
                 <div
                   key={s.id}
                   className="rounded-xl p-4 border flex items-center justify-between"
-                  style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.08)' }}
+                  style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
                 >
                   <div>
-                    <div className="text-sm font-medium" style={{ color: '#f0f4ff' }}>
+                    <div className="text-sm font-medium" style={{ color: 'var(--text)' }}>
                       {s.filter_subject ?? 'All Subjects'}
                     </div>
-                    <div className="text-xs mt-0.5" style={{ color: '#4a5470' }}>
+                    <div className="text-xs mt-0.5" style={{ color: 'var(--text-dim)' }}>
                       {formatDistanceToNow(new Date(s.created_at), { addSuffix: true })} ·{' '}
                       {s.total_questions} questions
                     </div>
@@ -235,7 +235,7 @@ export default async function ProgressPage() {
                     >
                       {acc}%
                     </div>
-                    <div className="text-xs" style={{ color: '#4a5470' }}>
+                    <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
                       {s.correct} / {answered}
                     </div>
                   </div>
@@ -246,10 +246,10 @@ export default async function ProgressPage() {
         ) : (
           <div
             className="rounded-xl border p-8 text-center"
-            style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.08)' }}
+            style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
           >
             <div className="text-2xl mb-3">📚</div>
-            <p className="text-sm" style={{ color: '#4a5470' }}>
+            <p className="text-sm" style={{ color: 'var(--text-dim)' }}>
               No sessions yet. Start your first review to track progress.
             </p>
           </div>
@@ -274,20 +274,20 @@ function StatCard({
     <div
       className="rounded-xl p-4 border"
       style={{
-        background: '#0f1629',
-        borderColor: accent ? 'rgba(212,175,55,0.25)' : 'rgba(212,175,55,0.08)',
+        background: 'var(--surface)',
+        borderColor: accent ? 'var(--gold-subtle)' : 'var(--gold-subtle)',
       }}
     >
       <div
         className="text-2xl font-bold mb-1"
         style={{
-          color: color ?? (accent ? '#d4af37' : '#f0f4ff'),
+          color: color ?? (accent ? 'var(--gold)' : 'var(--text)'),
           fontFamily: 'Georgia, serif',
         }}
       >
         {value}
       </div>
-      <div className="text-xs" style={{ color: '#4a5470' }}>
+      <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
         {label}
       </div>
     </div>
@@ -309,13 +309,13 @@ function StatusRow({
   return (
     <div className="mb-4 last:mb-0">
       <div className="flex justify-between text-sm mb-1.5">
-        <span style={{ color: '#8896b3' }}>{label}</span>
+        <span style={{ color: 'var(--text-muted)' }}>{label}</span>
         <span style={{ color }}>
           {value}
-          <span style={{ color: '#4a5470' }}> / {total}</span>
+          <span style={{ color: 'var(--text-dim)' }}> / {total}</span>
         </span>
       </div>
-      <div className="h-2 rounded-full overflow-hidden" style={{ background: '#161d35' }}>
+      <div className="h-2 rounded-full overflow-hidden" style={{ background: 'var(--surface2)' }}>
         <div
           className="h-full rounded-full transition-all"
           style={{ width: `${pct}%`, background: color }}

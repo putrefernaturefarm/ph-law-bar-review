@@ -5,14 +5,14 @@ interface BadgeProps {
 
 const styles: Record<string, React.CSSProperties> = {
   gold: {
-    color: '#d4af37',
-    borderColor: 'rgba(212,175,55,0.3)',
-    background: 'rgba(212,175,55,0.1)',
+    color: 'var(--gold)',
+    borderColor: 'var(--gold-subtle)',
+    background: 'var(--gold-subtle)',
   },
   muted: {
-    color: '#4a5470',
-    borderColor: '#1e2a4a',
-    background: '#161d35',
+    color: 'var(--text-dim)',
+    borderColor: 'var(--border)',
+    background: 'var(--surface2)',
   },
   easy: {
     color: '#34d399',

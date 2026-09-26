@@ -98,20 +98,20 @@ function SearchContent() {
   }
 
   const selectStyle: React.CSSProperties = {
-    background: '#0f1629',
-    borderColor: '#1e2a4a',
-    color: '#8896b3',
+    background: 'var(--surface)',
+    borderColor: 'var(--border)',
+    color: 'var(--text-muted)',
   }
 
   return (
     <div className="px-6 py-8 pb-24 md:pb-8 max-w-3xl mx-auto">
       <div className="mb-8">
-        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: '#4a5470' }}>
+        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--text-dim)' }}>
           Find Questions
         </div>
         <h1
           className="text-2xl font-bold"
-          style={{ color: '#f0f4ff', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--text)', fontFamily: 'Georgia, serif' }}
         >
           Search
         </h1>
@@ -127,7 +127,7 @@ function SearchContent() {
           viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth={2}
-          style={{ color: '#4a5470' }}
+          style={{ color: 'var(--text-dim)' }}
         >
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" strokeLinecap="round" />
@@ -140,15 +140,15 @@ function SearchContent() {
           placeholder="Search by keyword, article, doctrine..."
           className="w-full pl-10 pr-4 py-3 rounded-xl border outline-none text-sm transition-all"
           style={{
-            background: '#0f1629',
-            borderColor: '#1e2a4a',
-            color: '#f0f4ff',
+            background: 'var(--surface)',
+            borderColor: 'var(--border)',
+            color: 'var(--text)',
           }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = '#d4af37'
+            e.currentTarget.style.borderColor = 'var(--gold)'
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = '#1e2a4a'
+            e.currentTarget.style.borderColor = 'var(--border)'
           }}
         />
       </div>
@@ -203,7 +203,7 @@ function SearchContent() {
         onClick={handleSearch}
         disabled={loading}
         className="w-full py-3 rounded-xl font-semibold text-sm tracking-wide transition-all active:scale-[0.98] disabled:opacity-60 mb-8"
-        style={{ background: '#d4af37', color: '#080d1a' }}
+        style={{ background: 'var(--gold)', color: 'var(--bg)' }}
       >
         {loading ? 'Searching...' : 'Search Questions'}
       </button>
@@ -211,7 +211,7 @@ function SearchContent() {
       {/* Results */}
       {loading && (
         <div className="text-center py-8">
-          <div className="text-sm" style={{ color: '#4a5470' }}>
+          <div className="text-sm" style={{ color: 'var(--text-dim)' }}>
             Searching...
           </div>
         </div>
@@ -220,10 +220,10 @@ function SearchContent() {
       {!loading && searched && results.length === 0 && (
         <div
           className="rounded-xl border p-8 text-center"
-          style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.08)' }}
+          style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
         >
           <div className="text-2xl mb-3">🔍</div>
-          <p className="text-sm" style={{ color: '#4a5470' }}>
+          <p className="text-sm" style={{ color: 'var(--text-dim)' }}>
             No questions found. Try different keywords or filters.
           </p>
         </div>
@@ -233,7 +233,7 @@ function SearchContent() {
         <div>
           <div
             className="text-xs font-semibold tracking-widest uppercase mb-3"
-            style={{ color: '#4a5470' }}
+            style={{ color: 'var(--text-dim)' }}
           >
             {results.length} result{results.length !== 1 ? 's' : ''}
           </div>
@@ -254,10 +254,10 @@ function SearchContent() {
                   key={q.id}
                   className="rounded-xl border overflow-hidden"
                   style={{
-                    background: '#0f1629',
+                    background: 'var(--surface)',
                     borderColor: isExpanded
-                      ? 'rgba(212,175,55,0.3)'
-                      : 'rgba(212,175,55,0.08)',
+                      ? 'var(--gold-subtle)'
+                      : 'var(--gold-subtle)',
                   }}
                 >
                   {/* Question header */}
@@ -281,9 +281,9 @@ function SearchContent() {
                           <span
                             className="text-xs px-2 py-0.5 rounded-full border font-medium"
                             style={{
-                              color: '#8896b3',
-                              borderColor: '#1e2a4a',
-                              background: '#161d35',
+                              color: 'var(--text-muted)',
+                              borderColor: 'var(--border)',
+                              background: 'var(--surface2)',
                             }}
                           >
                             {QUESTION_TYPE_LABELS[q.question_type] ?? q.question_type}
@@ -292,9 +292,9 @@ function SearchContent() {
                             <span
                               className="text-xs px-2 py-0.5 rounded-full border font-medium"
                               style={{
-                                color: '#d4af37',
-                                borderColor: 'rgba(212,175,55,0.2)',
-                                background: 'rgba(212,175,55,0.08)',
+                                color: 'var(--gold)',
+                                borderColor: 'var(--gold-subtle)',
+                                background: 'var(--gold-subtle)',
                               }}
                             >
                               {q.subject}
@@ -303,7 +303,7 @@ function SearchContent() {
                         </div>
                         <p
                           className={`text-sm leading-relaxed ${isExpanded ? '' : 'line-clamp-2'}`}
-                          style={{ color: '#f0f4ff' }}
+                          style={{ color: 'var(--text)' }}
                         >
                           {q.content}
                         </p>
@@ -316,7 +316,7 @@ function SearchContent() {
                         stroke="currentColor"
                         strokeWidth={2}
                         className={`transition-transform flex-shrink-0 mt-1 ${isExpanded ? 'rotate-180' : ''}`}
-                        style={{ color: '#4a5470' }}
+                        style={{ color: 'var(--text-dim)' }}
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
@@ -327,12 +327,12 @@ function SearchContent() {
                   {isExpanded && (
                     <div
                       className="px-4 pb-4 border-t"
-                      style={{ borderColor: 'rgba(212,175,55,0.08)' }}
+                      style={{ borderColor: 'var(--gold-subtle)' }}
                     >
                       <div className="pt-4">
                         <div
                           className="text-xs font-semibold tracking-widest uppercase mb-2"
-                          style={{ color: '#d4af37' }}
+                          style={{ color: 'var(--gold)' }}
                         >
                           Answer
                         </div>
@@ -345,7 +345,7 @@ function SearchContent() {
                         {q.source_citation && (
                           <div
                             className="text-xs px-3 py-2 rounded-lg mb-4 font-mono"
-                            style={{ background: '#161d35', color: '#4a5470' }}
+                            style={{ background: 'var(--surface2)', color: 'var(--text-dim)' }}
                           >
                             {q.source_citation}
                           </div>
@@ -353,7 +353,7 @@ function SearchContent() {
                         <button
                           onClick={() => startSingleQuestion(q.id)}
                           className="text-xs px-4 py-2 rounded-lg font-semibold transition-all"
-                          style={{ background: 'rgba(212,175,55,0.1)', color: '#d4af37', border: '1px solid rgba(212,175,55,0.2)' }}
+                          style={{ background: 'var(--gold-subtle)', color: 'var(--gold)', border: '1px solid var(--gold-subtle)' }}
                         >
                           Practice This Question →
                         </button>
@@ -375,7 +375,7 @@ export default function SearchPage() {
     <Suspense
       fallback={
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="text-sm" style={{ color: '#4a5470' }}>
+          <div className="text-sm" style={{ color: 'var(--text-dim)' }}>
             Loading...
           </div>
         </div>

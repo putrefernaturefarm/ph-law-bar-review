@@ -107,9 +107,9 @@ function ReviewSetupContent() {
       onClick={onClick}
       className="px-4 py-2 rounded-xl text-sm font-medium transition-all border"
       style={{
-        background: active ? 'rgba(212,175,55,0.12)' : '#0f1629',
-        borderColor: active ? '#d4af37' : '#1e2a4a',
-        color: active ? '#d4af37' : '#8896b3',
+        background: active ? 'var(--gold-subtle)' : 'var(--surface)',
+        borderColor: active ? 'var(--gold)' : 'var(--border)',
+        color: active ? 'var(--gold)' : 'var(--text-muted)',
       }}
     >
       {label}
@@ -119,12 +119,12 @@ function ReviewSetupContent() {
   return (
     <div className="px-6 py-8 pb-28 md:pb-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: '#4a5470' }}>
+        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--text-dim)' }}>
           Configure
         </div>
         <h1
           className="text-2xl font-bold"
-          style={{ color: '#f0f4ff', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--text)', fontFamily: 'Georgia, serif' }}
         >
           Start a Review Session
         </h1>
@@ -251,7 +251,7 @@ function ReviewSetupContent() {
         onClick={handleStart}
         disabled={loading}
         className="w-full py-4 rounded-2xl font-bold text-lg tracking-wide transition-all active:scale-[0.98] disabled:opacity-60"
-        style={{ background: '#d4af37', color: '#080d1a' }}
+        style={{ background: 'var(--gold)', color: 'var(--bg)' }}
       >
         {loading ? 'Starting...' : 'START REVIEW →'}
       </button>
@@ -264,11 +264,11 @@ function SectionLabel({ number, title }: { number: number; title: string }) {
     <div className="flex items-center gap-2 mb-3">
       <span
         className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
-        style={{ background: 'rgba(212,175,55,0.15)', color: '#d4af37' }}
+        style={{ background: 'var(--gold-subtle)', color: 'var(--gold)' }}
       >
         {number}
       </span>
-      <span className="text-sm font-semibold" style={{ color: '#8896b3' }}>
+      <span className="text-sm font-semibold" style={{ color: 'var(--text-muted)' }}>
         {title}
       </span>
     </div>
@@ -279,7 +279,7 @@ export default function ReviewPage() {
   return (
     <Suspense fallback={
       <div className="flex items-center justify-center h-64">
-        <div style={{ color: '#4a5470' }}>Loading...</div>
+        <div style={{ color: 'var(--text-dim)' }}>Loading...</div>
       </div>
     }>
       <ReviewSetupContent />

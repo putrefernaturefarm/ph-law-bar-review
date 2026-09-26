@@ -67,12 +67,12 @@ export default async function DashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <div className="text-xs tracking-widest uppercase mb-1" style={{ color: '#4a5470' }}>
+          <div className="text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--text-dim)' }}>
             Philippine Law
           </div>
           <h1
             className="text-2xl font-bold"
-            style={{ color: '#f0f4ff', fontFamily: 'Georgia, serif' }}
+            style={{ color: 'var(--text)', fontFamily: 'Georgia, serif' }}
           >
             Bar Review System
           </h1>
@@ -80,7 +80,7 @@ export default async function DashboardPage() {
         <Link
           href="/review"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-[0.98] hover:opacity-90"
-          style={{ background: '#d4af37', color: '#080d1a' }}
+          style={{ background: 'var(--gold)', color: 'var(--bg)' }}
         >
           Start Review
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -90,11 +90,11 @@ export default async function DashboardPage() {
       </div>
 
       {/* Divider */}
-      <div className="h-px mb-8" style={{ background: 'rgba(212,175,55,0.08)' }} />
+      <div className="h-px mb-8" style={{ background: 'var(--gold-subtle)' }} />
 
       {/* Question Bank Stats */}
       <section className="mb-8">
-        <h2 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#4a5470' }}>
+        <h2 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--text-dim)' }}>
           Question Bank
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
 
       {/* Progress Stats */}
       <section className="mb-8">
-        <h2 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#4a5470' }}>
+        <h2 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--text-dim)' }}>
           Your Progress
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
 
       {/* Subjects Grid */}
       <section>
-        <h2 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#4a5470' }}>
+        <h2 className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--text-dim)' }}>
           Subjects
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -131,18 +131,18 @@ export default async function DashboardPage() {
                 href={`/review?subject=${encodeURIComponent(subject)}`}
                 className="group rounded-xl p-4 border transition-all card-hover"
                 style={{
-                  background: '#0f1629',
-                  borderColor: 'rgba(212,175,55,0.1)',
+                  background: 'var(--surface)',
+                  borderColor: 'var(--gold-subtle)',
                 }}
               >
                 <div
                   className="font-semibold text-sm mb-2"
-                  style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+                  style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
                 >
                   {subject}
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs" style={{ color: '#4a5470' }}>
+                  <span className="text-xs" style={{ color: 'var(--text-dim)' }}>
                     {count} question{count !== 1 ? 's' : ''}
                   </span>
                   <svg
@@ -152,7 +152,7 @@ export default async function DashboardPage() {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={2}
-                    style={{ color: '#4a5470' }}
+                    style={{ color: 'var(--text-dim)' }}
                     className="group-hover:translate-x-0.5 transition-transform"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -182,20 +182,20 @@ function StatCard({
     <div
       className="rounded-xl p-4 border"
       style={{
-        background: '#0f1629',
-        borderColor: accent ? 'rgba(212,175,55,0.25)' : 'rgba(212,175,55,0.08)',
+        background: 'var(--surface)',
+        borderColor: accent ? 'var(--gold-subtle)' : 'var(--gold-subtle)',
       }}
     >
       <div
         className="text-2xl font-bold mb-1"
         style={{
-          color: color ?? (accent ? '#d4af37' : '#f0f4ff'),
+          color: color ?? (accent ? 'var(--gold)' : 'var(--text)'),
           fontFamily: 'Georgia, serif',
         }}
       >
         {value}
       </div>
-      <div className="text-xs" style={{ color: '#4a5470' }}>
+      <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
         {label}
       </div>
     </div>

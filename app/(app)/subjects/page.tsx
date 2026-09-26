@@ -59,12 +59,12 @@ export default async function SubjectsPage() {
   return (
     <div className="px-6 py-8 pb-24 md:pb-8 max-w-5xl mx-auto">
       <div className="mb-8">
-        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: '#4a5470' }}>
+        <div className="text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--text-dim)' }}>
           Bar Exam
         </div>
         <h1
           className="text-2xl font-bold"
-          style={{ color: '#f0f4ff', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--text)', fontFamily: 'Georgia, serif' }}
         >
           Subjects
         </h1>
@@ -89,15 +89,15 @@ export default async function SubjectsPage() {
               href={`/review?subject=${encodeURIComponent(subject)}`}
               className="group rounded-2xl p-5 border transition-all card-hover"
               style={{
-                background: '#0f1629',
-                borderColor: 'rgba(212,175,55,0.1)',
+                background: 'var(--surface)',
+                borderColor: 'var(--gold-subtle)',
               }}
             >
               {/* Subject name */}
               <div className="flex items-start justify-between mb-3">
                 <h2
                   className="font-semibold text-base"
-                  style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+                  style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
                 >
                   {subject}
                 </h2>
@@ -108,7 +108,7 @@ export default async function SubjectsPage() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
-                  style={{ color: '#4a5470', flexShrink: 0 }}
+                  style={{ color: 'var(--text-dim)', flexShrink: 0 }}
                   className="group-hover:translate-x-0.5 transition-transform mt-0.5"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -117,10 +117,10 @@ export default async function SubjectsPage() {
 
               {/* Stats row */}
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-2xl font-bold" style={{ color: '#f0f4ff' }}>
+                <span className="text-2xl font-bold" style={{ color: 'var(--text)' }}>
                   {stats.total}
                 </span>
-                <span className="text-xs" style={{ color: '#4a5470' }}>
+                <span className="text-xs" style={{ color: 'var(--text-dim)' }}>
                   questions
                 </span>
                 {mastered > 0 && (
@@ -142,7 +142,7 @@ export default async function SubjectsPage() {
                 <div>
                   <div
                     className="h-1.5 rounded-full mb-2 overflow-hidden"
-                    style={{ background: '#1e2a4a' }}
+                    style={{ background: 'var(--border)' }}
                   >
                     <div
                       className="h-full rounded-full transition-all"
@@ -151,12 +151,12 @@ export default async function SubjectsPage() {
                         background: masteryPct > 66
                           ? '#10b981'
                           : masteryPct > 33
-                          ? '#f0c040'
-                          : '#d4af37',
+                          ? 'var(--gold-bright)'
+                          : 'var(--gold)',
                       }}
                     />
                   </div>
-                  <div className="flex justify-between text-xs" style={{ color: '#4a5470' }}>
+                  <div className="flex justify-between text-xs" style={{ color: 'var(--text-dim)' }}>
                     <span>Mastery</span>
                     <span>{masteryPct}%</span>
                   </div>

@@ -89,11 +89,11 @@ export default async function IngestionPage() {
       <div className="mb-8">
         <h1
           className="text-2xl font-bold tracking-wide mb-1"
-          style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
         >
           Ingestion Status
         </h1>
-        <p className="text-sm" style={{ color: '#4a5470' }}>
+        <p className="text-sm" style={{ color: 'var(--text-dim)' }}>
           DDC Library → Supabase pipeline tracker
         </p>
       </div>
@@ -102,8 +102,8 @@ export default async function IngestionPage() {
       <div
         className="rounded-2xl p-6 mb-6"
         style={{
-          background: '#0f1629',
-          border: '1px solid rgba(212,175,55,0.1)',
+          background: 'var(--surface)',
+          border: '1px solid var(--gold-subtle)',
         }}
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -128,14 +128,14 @@ export default async function IngestionPage() {
         {/* Questions total */}
         <div
           className="flex items-center justify-between py-4 border-t border-b mb-5"
-          style={{ borderColor: 'rgba(212,175,55,0.08)' }}
+          style={{ borderColor: 'var(--gold-subtle)' }}
         >
-          <span className="text-sm font-medium" style={{ color: '#8896b3' }}>
+          <span className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
             Questions generated
           </span>
           <span
             className="text-2xl font-bold tabular-nums"
-            style={{ color: '#d4af37' }}
+            style={{ color: 'var(--gold)' }}
           >
             {totalQuestions.toLocaleString()}
           </span>
@@ -143,23 +143,23 @@ export default async function IngestionPage() {
 
         {/* Progress bar */}
         <div>
-          <div className="flex justify-between text-xs mb-2" style={{ color: '#4a5470' }}>
+          <div className="flex justify-between text-xs mb-2" style={{ color: 'var(--text-dim)' }}>
             <span>
               {counts.completed.toLocaleString()} of {counts.total.toLocaleString()} files completed
             </span>
-            <span className="font-semibold" style={{ color: '#d4af37' }}>
+            <span className="font-semibold" style={{ color: 'var(--gold)' }}>
               {pct}%
             </span>
           </div>
           <div
             className="w-full rounded-full overflow-hidden"
-            style={{ height: '8px', background: '#1e2a4a' }}
+            style={{ height: '8px', background: 'var(--border)' }}
           >
             <div
               className="h-full rounded-full transition-all"
               style={{
                 width: `${pct}%`,
-                background: 'linear-gradient(90deg, #d4af37 0%, #f0d060 100%)',
+                background: 'linear-gradient(90deg, var(--gold) 0%, #f0d060 100%)',
               }}
             />
           </div>
@@ -195,12 +195,12 @@ export default async function IngestionPage() {
       <div
         className="rounded-2xl overflow-hidden"
         style={{
-          background: '#0f1629',
-          border: '1px solid rgba(212,175,55,0.08)',
+          background: 'var(--surface)',
+          border: '1px solid var(--gold-subtle)',
         }}
       >
-        <div className="px-6 py-4 border-b" style={{ borderColor: 'rgba(212,175,55,0.08)' }}>
-          <h2 className="text-sm font-semibold" style={{ color: '#8896b3' }}>
+        <div className="px-6 py-4 border-b" style={{ borderColor: 'var(--gold-subtle)' }}>
+          <h2 className="text-sm font-semibold" style={{ color: 'var(--text-muted)' }}>
             Recently processed (last 20 files)
           </h2>
         </div>
@@ -208,7 +208,7 @@ export default async function IngestionPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr style={{ background: '#0a1022', color: '#4a5470' }}>
+              <tr style={{ background: '#0a1022', color: 'var(--text-dim)' }}>
                 <th className="text-left px-4 py-3 font-medium">Filename</th>
                 <th className="text-left px-4 py-3 font-medium hidden md:table-cell">Type</th>
                 <th className="text-left px-4 py-3 font-medium hidden lg:table-cell">Size</th>
@@ -223,7 +223,7 @@ export default async function IngestionPage() {
                   key={doc.id}
                   style={{
                     background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)',
-                    borderTop: '1px solid rgba(212,175,55,0.04)',
+                    borderTop: '1px solid var(--gold-subtle)',
                   }}
                 >
                   <td className="px-4 py-3 max-w-xs">
@@ -244,10 +244,10 @@ export default async function IngestionPage() {
                       </span>
                     )}
                   </td>
-                  <td className="px-4 py-3 hidden md:table-cell" style={{ color: '#4a5470' }}>
+                  <td className="px-4 py-3 hidden md:table-cell" style={{ color: 'var(--text-dim)' }}>
                     {doc.file_type ?? '—'}
                   </td>
-                  <td className="px-4 py-3 hidden lg:table-cell" style={{ color: '#4a5470' }}>
+                  <td className="px-4 py-3 hidden lg:table-cell" style={{ color: 'var(--text-dim)' }}>
                     {formatBytes(doc.file_size)}
                   </td>
                   <td className="px-4 py-3">
@@ -255,13 +255,13 @@ export default async function IngestionPage() {
                   </td>
                   <td
                     className="px-4 py-3 text-right tabular-nums font-medium"
-                    style={{ color: doc.questions_generated > 0 ? '#d4af37' : '#4a5470' }}
+                    style={{ color: doc.questions_generated > 0 ? 'var(--gold)' : 'var(--text-dim)' }}
                   >
                     {doc.questions_generated.toLocaleString()}
                   </td>
                   <td
                     className="px-4 py-3 text-right hidden md:table-cell"
-                    style={{ color: '#4a5470' }}
+                    style={{ color: 'var(--text-dim)' }}
                   >
                     {formatDate(doc.created_at)}
                   </td>
@@ -273,7 +273,7 @@ export default async function IngestionPage() {
                   <td
                     colSpan={6}
                     className="px-4 py-8 text-center"
-                    style={{ color: '#4a5470' }}
+                    style={{ color: 'var(--text-dim)' }}
                   >
                     No documents registered yet. Run the ingestion pipeline to start.
                   </td>
@@ -288,20 +288,20 @@ export default async function IngestionPage() {
       <div
         className="mt-6 rounded-xl px-5 py-4 text-xs"
         style={{
-          background: 'rgba(212,175,55,0.05)',
-          border: '1px solid rgba(212,175,55,0.12)',
+          background: 'var(--gold-subtle)',
+          border: '1px solid var(--gold-subtle)',
           color: '#6b7a9e',
         }}
       >
-        <span style={{ color: '#d4af37' }} className="font-semibold">
+        <span style={{ color: 'var(--gold)' }} className="font-semibold">
           To run the pipeline:
         </span>{' '}
         open a terminal in{' '}
-        <code className="font-mono" style={{ color: '#8896b3' }}>
+        <code className="font-mono" style={{ color: 'var(--text-muted)' }}>
           ph-law-bar-review/ingestion/
         </code>{' '}
         and run{' '}
-        <code className="font-mono" style={{ color: '#8896b3' }}>
+        <code className="font-mono" style={{ color: 'var(--text-muted)' }}>
           uv run python ingest.py
         </code>
         . The page refreshes automatically on each visit to show the latest status.
@@ -315,7 +315,7 @@ export default async function IngestionPage() {
 function StatCard({
   label,
   value,
-  accent = '#d4af37',
+  accent = 'var(--gold)',
 }: {
   label: string
   value: string
@@ -324,9 +324,9 @@ function StatCard({
   return (
     <div
       className="rounded-xl px-4 py-3"
-      style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,175,55,0.06)' }}
+      style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--gold-subtle)' }}
     >
-      <div className="text-xs mb-1" style={{ color: '#4a5470' }}>
+      <div className="text-xs mb-1" style={{ color: 'var(--text-dim)' }}>
         {label}
       </div>
       <div className="text-xl font-bold tabular-nums" style={{ color: accent }}>
@@ -362,14 +362,14 @@ function StatusBadge({
         <span className="text-xs capitalize font-medium" style={{ color }}>
           {status}
         </span>
-        <span className="text-xs tabular-nums" style={{ color: '#4a5470' }}>
+        <span className="text-xs tabular-nums" style={{ color: 'var(--text-dim)' }}>
           {pct}%
         </span>
       </div>
       <div className="text-lg font-bold tabular-nums mb-1" style={{ color }}>
         {count.toLocaleString()}
       </div>
-      <div className="text-xs" style={{ color: '#4a5470' }}>
+      <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
         {description}
       </div>
     </div>
@@ -383,7 +383,7 @@ function StatusPill({ status }: { status: string }) {
     failed:     { label: 'failed',     bg: '#1c0e0e', fg: '#f87171' },
     pending:    { label: 'pending',    bg: '#0f172a', fg: '#60a5fa' },
   }
-  const style = map[status] ?? { label: status, bg: '#1e2a4a', fg: '#8896b3' }
+  const style = map[status] ?? { label: status, bg: 'var(--border)', fg: 'var(--text-muted)' }
 
   return (
     <span

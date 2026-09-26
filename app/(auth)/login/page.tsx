@@ -40,11 +40,11 @@ export default function LoginPage() {
         <div className="text-5xl mb-4">⚖️</div>
         <h1
           className="text-2xl font-bold tracking-widest mb-2"
-          style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
         >
           LEXIS REVIEW
         </h1>
-        <p className="text-sm" style={{ color: '#8896b3' }}>
+        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
           Philippine Law Bar Exam System
         </p>
       </div>
@@ -53,17 +53,17 @@ export default function LoginPage() {
       <div
         className="rounded-2xl p-8 border"
         style={{
-          background: '#0f1629',
-          borderColor: 'rgba(212,175,55,0.15)',
+          background: 'var(--surface)',
+          borderColor: 'var(--gold-subtle)',
         }}
       >
         <h2
           className="text-xl font-semibold mb-1"
-          style={{ color: '#f0f4ff' }}
+          style={{ color: 'var(--text)' }}
         >
           Sign In
         </h2>
-        <p className="text-sm mb-6" style={{ color: '#8896b3' }}>
+        <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
           Continue your bar review session
         </p>
 
@@ -72,7 +72,7 @@ export default function LoginPage() {
           <div>
             <label
               className="block text-xs font-medium mb-1.5 tracking-wide uppercase"
-              style={{ color: '#8896b3' }}
+              style={{ color: 'var(--text-muted)' }}
             >
               Email Address
             </label>
@@ -85,15 +85,15 @@ export default function LoginPage() {
               placeholder="you@example.com"
               className="w-full rounded-xl px-4 py-3 text-sm border outline-none transition-all"
               style={{
-                background: '#161d35',
-                borderColor: 'rgba(212,175,55,0.15)',
-                color: '#f0f4ff',
+                background: 'var(--surface2)',
+                borderColor: 'var(--gold-subtle)',
+                color: 'var(--text)',
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#d4af37'
+                e.currentTarget.style.borderColor = 'var(--gold)'
               }}
               onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(212,175,55,0.15)'
+                e.currentTarget.style.borderColor = 'var(--gold-subtle)'
               }}
             />
           </div>
@@ -102,7 +102,7 @@ export default function LoginPage() {
           <div>
             <label
               className="block text-xs font-medium mb-1.5 tracking-wide uppercase"
-              style={{ color: '#8896b3' }}
+              style={{ color: 'var(--text-muted)' }}
             >
               Password
             </label>
@@ -115,15 +115,15 @@ export default function LoginPage() {
               placeholder="••••••••"
               className="w-full rounded-xl px-4 py-3 text-sm border outline-none transition-all"
               style={{
-                background: '#161d35',
-                borderColor: 'rgba(212,175,55,0.15)',
-                color: '#f0f4ff',
+                background: 'var(--surface2)',
+                borderColor: 'var(--gold-subtle)',
+                color: 'var(--text)',
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#d4af37'
+                e.currentTarget.style.borderColor = 'var(--gold)'
               }}
               onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(212,175,55,0.15)'
+                e.currentTarget.style.borderColor = 'var(--gold-subtle)'
               }}
             />
           </div>
@@ -148,8 +148,8 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full py-3 rounded-xl font-semibold text-sm tracking-wide transition-all active:scale-[0.98] disabled:opacity-60"
             style={{
-              background: loading ? 'rgba(212,175,55,0.6)' : '#d4af37',
-              color: '#080d1a',
+              background: loading ? 'var(--gold-subtle)' : 'var(--gold)',
+              color: 'var(--bg)',
             }}
           >
             {loading ? 'Signing In...' : 'Sign In →'}
@@ -158,11 +158,11 @@ export default function LoginPage() {
 
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
-          <div className="flex-1 h-px" style={{ background: '#1e2a4a' }} />
-          <span className="text-xs" style={{ color: '#4a5470' }}>
+          <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
+          <span className="text-xs" style={{ color: 'var(--text-dim)' }}>
             New here?
           </span>
-          <div className="flex-1 h-px" style={{ background: '#1e2a4a' }} />
+          <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
         </div>
 
         {/* Signup link */}
@@ -170,15 +170,15 @@ export default function LoginPage() {
           href="/signup"
           className="block text-center w-full py-3 rounded-xl text-sm font-medium border transition-all hover:border-opacity-60"
           style={{
-            borderColor: 'rgba(212,175,55,0.2)',
-            color: '#d4af37',
+            borderColor: 'var(--gold-subtle)',
+            color: 'var(--gold)',
           }}
         >
           Create an Account
         </Link>
       </div>
 
-      <p className="text-center mt-6 text-xs" style={{ color: '#4a5470' }}>
+      <p className="text-center mt-6 text-xs" style={{ color: 'var(--text-dim)' }}>
         LEXIS BAR REVIEW · Philippines
       </p>
     </div>

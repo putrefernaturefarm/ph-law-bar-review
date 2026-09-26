@@ -195,7 +195,7 @@ function ReviewSessionContent() {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <div className="text-2xl mb-3">⚖️</div>
-          <div className="text-sm" style={{ color: '#4a5470' }}>
+          <div className="text-sm" style={{ color: 'var(--text-dim)' }}>
             Loading questions...
           </div>
         </div>
@@ -214,7 +214,7 @@ function ReviewSessionContent() {
           <button
             onClick={() => router.push('/review')}
             className="px-6 py-2.5 rounded-xl text-sm font-semibold"
-            style={{ background: '#d4af37', color: '#080d1a' }}
+            style={{ background: 'var(--gold)', color: 'var(--bg)' }}
           >
             Back to Setup
           </button>
@@ -234,27 +234,27 @@ function ReviewSessionContent() {
       <div className="flex items-center justify-center min-h-[80vh] px-6">
         <div
           className="w-full max-w-md rounded-2xl p-8 border text-center"
-          style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.2)' }}
+          style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
         >
           <div className="text-4xl mb-4">🎓</div>
           <h2
             className="text-2xl font-bold mb-2"
-            style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+            style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
           >
             Session Complete
           </h2>
-          <p className="text-sm mb-8" style={{ color: '#8896b3' }}>
+          <p className="text-sm mb-8" style={{ color: 'var(--text-muted)' }}>
             {session?.filter_subject ?? 'All Subjects'}
           </p>
 
           {/* Score */}
           <div
             className="text-5xl font-bold mb-1"
-            style={{ color: '#f0c040', fontFamily: 'Georgia, serif' }}
+            style={{ color: 'var(--gold-bright)', fontFamily: 'Georgia, serif' }}
           >
             {accuracy}%
           </div>
-          <div className="text-sm mb-8" style={{ color: '#8896b3' }}>
+          <div className="text-sm mb-8" style={{ color: 'var(--text-muted)' }}>
             Accuracy
           </div>
 
@@ -262,12 +262,12 @@ function ReviewSessionContent() {
           <div className="grid grid-cols-3 gap-3 mb-8">
             <div
               className="rounded-xl p-3 border"
-              style={{ background: '#161d35', borderColor: '#1e2a4a' }}
+              style={{ background: 'var(--surface2)', borderColor: 'var(--border)' }}
             >
-              <div className="text-lg font-bold" style={{ color: '#f0f4ff' }}>
+              <div className="text-lg font-bold" style={{ color: 'var(--text)' }}>
                 {totalAnswered}
               </div>
-              <div className="text-xs" style={{ color: '#4a5470' }}>
+              <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
                 Answered
               </div>
             </div>
@@ -278,7 +278,7 @@ function ReviewSessionContent() {
               <div className="text-lg font-bold" style={{ color: '#10b981' }}>
                 {correct}
               </div>
-              <div className="text-xs" style={{ color: '#4a5470' }}>
+              <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
                 Known
               </div>
             </div>
@@ -289,13 +289,13 @@ function ReviewSessionContent() {
               <div className="text-lg font-bold" style={{ color: '#ef4444' }}>
                 {incorrect}
               </div>
-              <div className="text-xs" style={{ color: '#4a5470' }}>
+              <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
                 Review
               </div>
             </div>
           </div>
 
-          <div className="text-xs mb-8" style={{ color: '#4a5470' }}>
+          <div className="text-xs mb-8" style={{ color: 'var(--text-dim)' }}>
             Time: {minutes}m {seconds}s
           </div>
 
@@ -303,14 +303,14 @@ function ReviewSessionContent() {
             <button
               onClick={() => router.push('/review')}
               className="flex-1 py-3 rounded-xl text-sm font-semibold border transition-all"
-              style={{ borderColor: '#1e2a4a', color: '#8896b3' }}
+              style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
             >
               New Session
             </button>
             <button
               onClick={() => router.push('/dashboard')}
               className="flex-1 py-3 rounded-xl text-sm font-semibold transition-all"
-              style={{ background: '#d4af37', color: '#080d1a' }}
+              style={{ background: 'var(--gold)', color: 'var(--bg)' }}
             >
               Dashboard
             </button>
@@ -338,19 +338,19 @@ function ReviewSessionContent() {
     <div className="min-h-screen flex flex-col px-4 py-6 pb-24 md:pb-6 max-w-2xl mx-auto w-full">
       {/* Top bar */}
       <div className="flex items-center justify-between mb-4">
-        <div className="text-xs font-medium" style={{ color: '#4a5470' }}>
+        <div className="text-xs font-medium" style={{ color: 'var(--text-dim)' }}>
           {q.subject ?? 'General'}
           {q.topic ? ` · ${q.topic}` : ''}
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold" style={{ color: '#8896b3' }}>
+          <span className="text-sm font-semibold" style={{ color: 'var(--text-muted)' }}>
             {currentIndex + 1}{' '}
-            <span style={{ color: '#4a5470' }}>/ {totalQuestions}</span>
+            <span style={{ color: 'var(--text-dim)' }}>/ {totalQuestions}</span>
           </span>
           <button
             onClick={() => router.push('/review')}
             className="text-xs px-3 py-1.5 rounded-lg border transition-all"
-            style={{ borderColor: '#1e2a4a', color: '#4a5470' }}
+            style={{ borderColor: 'var(--border)', color: 'var(--text-dim)' }}
           >
             Exit
           </button>
@@ -360,13 +360,13 @@ function ReviewSessionContent() {
       {/* Progress bar */}
       <div
         className="h-1 rounded-full mb-6 overflow-hidden"
-        style={{ background: '#1e2a4a' }}
+        style={{ background: 'var(--border)' }}
       >
         <div
           className="h-full rounded-full progress-bar"
           style={{
             width: `${progress}%`,
-            background: 'linear-gradient(90deg, #d4af37, #f0c040)',
+            background: 'linear-gradient(90deg, var(--gold), var(--gold-bright))',
           }}
         />
       </div>
@@ -375,8 +375,8 @@ function ReviewSessionContent() {
       <div
         className="flex-1 flex flex-col rounded-2xl border p-6 md:p-8"
         style={{
-          background: '#0f1629',
-          borderColor: 'rgba(212,175,55,0.12)',
+          background: 'var(--surface)',
+          borderColor: 'var(--gold-subtle)',
         }}
       >
         {/* Badges */}
@@ -394,9 +394,9 @@ function ReviewSessionContent() {
           <span
             className="px-2 py-0.5 text-xs font-medium rounded-full border"
             style={{
-              color: '#8896b3',
-              background: '#161d35',
-              borderColor: '#1e2a4a',
+              color: 'var(--text-muted)',
+              background: 'var(--surface2)',
+              borderColor: 'var(--border)',
             }}
           >
             {QUESTION_TYPE_LABELS[q.question_type] ?? q.question_type}
@@ -405,9 +405,9 @@ function ReviewSessionContent() {
             <span
               className="px-2 py-0.5 text-xs font-medium rounded-full border"
               style={{
-                color: '#d4af37',
-                background: 'rgba(212,175,55,0.08)',
-                borderColor: 'rgba(212,175,55,0.2)',
+                color: 'var(--gold)',
+                background: 'var(--gold-subtle)',
+                borderColor: 'var(--gold-subtle)',
               }}
             >
               ✓ Verified
@@ -419,7 +419,7 @@ function ReviewSessionContent() {
         <div className="flex-1">
           <p
             className="text-lg md:text-xl leading-relaxed mb-6"
-            style={{ color: '#f0f4ff', fontFamily: 'Georgia, serif' }}
+            style={{ color: 'var(--text)', fontFamily: 'Georgia, serif' }}
           >
             {q.content}
           </p>
@@ -430,9 +430,9 @@ function ReviewSessionContent() {
               onClick={handleReveal}
               className="w-full py-3.5 rounded-xl font-semibold text-sm tracking-wide transition-all active:scale-[0.98] border"
               style={{
-                background: 'rgba(212,175,55,0.08)',
-                borderColor: 'rgba(212,175,55,0.25)',
-                color: '#d4af37',
+                background: 'var(--gold-subtle)',
+                borderColor: 'var(--gold-subtle)',
+                color: 'var(--gold)',
               }}
             >
               Show Answer{' '}
@@ -446,14 +446,14 @@ function ReviewSessionContent() {
           <div className="answer-reveal">
             <div
               className="h-px my-5"
-              style={{ background: 'rgba(212,175,55,0.12)' }}
+              style={{ background: 'var(--gold-subtle)' }}
             />
 
             {/* Answer */}
             <div className="mb-4">
               <div
                 className="text-xs font-semibold tracking-widest uppercase mb-2"
-                style={{ color: '#d4af37' }}
+                style={{ color: 'var(--gold)' }}
               >
                 Answer
               </div>
@@ -470,11 +470,11 @@ function ReviewSessionContent() {
               <div className="mb-4">
                 <div
                   className="text-xs font-semibold tracking-widest uppercase mb-2"
-                  style={{ color: '#4a5470' }}
+                  style={{ color: 'var(--text-dim)' }}
                 >
                   Explanation
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: '#8896b3' }}>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                   {q.explanation}
                 </p>
               </div>
@@ -485,8 +485,8 @@ function ReviewSessionContent() {
               <div
                 className="px-3 py-2 rounded-lg text-xs mb-5"
                 style={{
-                  background: '#161d35',
-                  color: '#4a5470',
+                  background: 'var(--surface2)',
+                  color: 'var(--text-dim)',
                   fontFamily: 'monospace',
                 }}
               >
@@ -525,11 +525,11 @@ function ReviewSessionContent() {
 
       {/* Keyboard hint */}
       {!isRevealed && (
-        <p className="text-center text-xs mt-3" style={{ color: '#4a5470' }}>
+        <p className="text-center text-xs mt-3" style={{ color: 'var(--text-dim)' }}>
           Press{' '}
           <kbd
             className="px-1.5 py-0.5 rounded text-xs"
-            style={{ background: '#161d35', color: '#8896b3' }}
+            style={{ background: 'var(--surface2)', color: 'var(--text-muted)' }}
           >
             Space
           </kbd>{' '}
@@ -547,7 +547,7 @@ export default function ReviewSessionPage() {
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center">
             <div className="text-2xl mb-3">⚖️</div>
-            <div className="text-sm" style={{ color: '#4a5470' }}>
+            <div className="text-sm" style={{ color: 'var(--text-dim)' }}>
               Loading...
             </div>
           </div>

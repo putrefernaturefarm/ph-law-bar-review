@@ -50,16 +50,16 @@ export default function SignupPage() {
   }
 
   const inputStyle = {
-    background: '#161d35',
-    borderColor: 'rgba(212,175,55,0.15)',
-    color: '#f0f4ff',
+    background: 'var(--surface2)',
+    borderColor: 'var(--gold-subtle)',
+    color: 'var(--text)',
   }
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.currentTarget.style.borderColor = '#d4af37'
+    e.currentTarget.style.borderColor = 'var(--gold)'
   }
   const blurStyle = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.currentTarget.style.borderColor = 'rgba(212,175,55,0.15)'
+    e.currentTarget.style.borderColor = 'var(--gold-subtle)'
   }
 
   return (
@@ -69,11 +69,11 @@ export default function SignupPage() {
         <div className="text-5xl mb-4">⚖️</div>
         <h1
           className="text-2xl font-bold tracking-widest mb-2"
-          style={{ color: '#d4af37', fontFamily: 'Georgia, serif' }}
+          style={{ color: 'var(--gold)', fontFamily: 'Georgia, serif' }}
         >
           LEXIS REVIEW
         </h1>
-        <p className="text-sm" style={{ color: '#8896b3' }}>
+        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
           Philippine Law Bar Exam System
         </p>
       </div>
@@ -81,26 +81,26 @@ export default function SignupPage() {
       {/* Card */}
       <div
         className="rounded-2xl p-8 border"
-        style={{ background: '#0f1629', borderColor: 'rgba(212,175,55,0.15)' }}
+        style={{ background: 'var(--surface)', borderColor: 'var(--gold-subtle)' }}
       >
         {success ? (
           <div className="text-center py-4">
             <div className="text-4xl mb-4">✉️</div>
-            <h2 className="text-xl font-semibold mb-2" style={{ color: '#f0f4ff' }}>
+            <h2 className="text-xl font-semibold mb-2" style={{ color: 'var(--text)' }}>
               Check your email
             </h2>
-            <p className="text-sm" style={{ color: '#8896b3' }}>
+            <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
               We sent a confirmation link to{' '}
-              <span style={{ color: '#d4af37' }}>{email}</span>. Redirecting to
+              <span style={{ color: 'var(--gold)' }}>{email}</span>. Redirecting to
               login...
             </p>
           </div>
         ) : (
           <>
-            <h2 className="text-xl font-semibold mb-1" style={{ color: '#f0f4ff' }}>
+            <h2 className="text-xl font-semibold mb-1" style={{ color: 'var(--text)' }}>
               Create Account
             </h2>
-            <p className="text-sm mb-6" style={{ color: '#8896b3' }}>
+            <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
               Start your bar review journey
             </p>
 
@@ -108,7 +108,7 @@ export default function SignupPage() {
               <div>
                 <label
                   className="block text-xs font-medium mb-1.5 tracking-wide uppercase"
-                  style={{ color: '#8896b3' }}
+                  style={{ color: 'var(--text-muted)' }}
                 >
                   Email Address
                 </label>
@@ -129,7 +129,7 @@ export default function SignupPage() {
               <div>
                 <label
                   className="block text-xs font-medium mb-1.5 tracking-wide uppercase"
-                  style={{ color: '#8896b3' }}
+                  style={{ color: 'var(--text-muted)' }}
                 >
                   Password
                 </label>
@@ -150,7 +150,7 @@ export default function SignupPage() {
               <div>
                 <label
                   className="block text-xs font-medium mb-1.5 tracking-wide uppercase"
-                  style={{ color: '#8896b3' }}
+                  style={{ color: 'var(--text-muted)' }}
                 >
                   Confirm Password
                 </label>
@@ -186,8 +186,8 @@ export default function SignupPage() {
                 disabled={loading}
                 className="w-full py-3 rounded-xl font-semibold text-sm tracking-wide transition-all active:scale-[0.98] disabled:opacity-60"
                 style={{
-                  background: loading ? 'rgba(212,175,55,0.6)' : '#d4af37',
-                  color: '#080d1a',
+                  background: loading ? 'var(--gold-subtle)' : 'var(--gold)',
+                  color: 'var(--bg)',
                 }}
               >
                 {loading ? 'Creating Account...' : 'Create Account →'}
@@ -195,17 +195,17 @@ export default function SignupPage() {
             </form>
 
             <div className="my-6 flex items-center gap-3">
-              <div className="flex-1 h-px" style={{ background: '#1e2a4a' }} />
-              <span className="text-xs" style={{ color: '#4a5470' }}>
+              <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
+              <span className="text-xs" style={{ color: 'var(--text-dim)' }}>
                 Already registered?
               </span>
-              <div className="flex-1 h-px" style={{ background: '#1e2a4a' }} />
+              <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
             </div>
 
             <Link
               href="/login"
               className="block text-center w-full py-3 rounded-xl text-sm font-medium border transition-all"
-              style={{ borderColor: 'rgba(212,175,55,0.2)', color: '#d4af37' }}
+              style={{ borderColor: 'var(--gold-subtle)', color: 'var(--gold)' }}
             >
               Sign In Instead
             </Link>
@@ -213,7 +213,7 @@ export default function SignupPage() {
         )}
       </div>
 
-      <p className="text-center mt-6 text-xs" style={{ color: '#4a5470' }}>
+      <p className="text-center mt-6 text-xs" style={{ color: 'var(--text-dim)' }}>
         LEXIS BAR REVIEW · Philippines
       </p>
     </div>

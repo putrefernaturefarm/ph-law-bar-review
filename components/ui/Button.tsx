@@ -28,11 +28,11 @@ export function Button({
   }
 
   const variantStyles: Record<string, React.CSSProperties> = {
-    gold: { background: '#d4af37', color: '#080d1a' },
-    ghost: { borderColor: '#1e2a4a', color: '#8896b3' },
+    gold: { background: 'var(--gold)', color: 'var(--bg)' },
+    ghost: { borderColor: 'var(--border)', color: 'var(--text-muted)' },
     know: { background: '#059669', color: '#fff' },
     'dont-know': { background: '#dc2626', color: '#fff' },
-    surface: { background: '#161d35', borderColor: '#1e2a4a', color: '#8896b3' },
+    surface: { background: 'var(--surface2)', borderColor: 'var(--border)', color: 'var(--text-muted)' },
   }
 
   return (
