@@ -30,6 +30,7 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
   const isProtected =
     path.startsWith('/dashboard') ||
+    path.startsWith('/library') ||
     path.startsWith('/review') ||
     path.startsWith('/subjects') ||
     path.startsWith('/progress') ||
